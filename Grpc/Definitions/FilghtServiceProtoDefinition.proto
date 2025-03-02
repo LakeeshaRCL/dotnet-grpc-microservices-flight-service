@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+option csharp_namespace = "FlightServiceProtoService";
+package flight_service_proto_service; 
+
+// service definitions
+service FlightServiceProtoService{
+  
+  // define rpc methods
+  rpc GetFlight(GetFlightRequest) returns (GetFlightGrpcResponse);
+}
+
+
+// define rpc messages
+message GetFlightRequest{
+  int64 id = 1;
+}
+
+message GetFlightGrpcResponse{
+  int32 statusCode = 1;
+  Flight flight = 2;
+}
+
+message Flight {
+  string airlineName = 1;
+  string source = 2;
+  string destination = 3;
+  int32 availableSeats = 4;
+  string departureTime = 5;
+  string arrivalTime = 6;
+}
